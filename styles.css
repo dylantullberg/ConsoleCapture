@@ -1,0 +1,177 @@
+/* Glassmorphism Dark Mode Styles */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 320px;
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+.container {
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.logo {
+  width: 32px; /* Adjust the size of the logo */
+  height: 32px; /* Keep it square */
+  margin-right: 8px; /* Add space between the logo and title */
+}
+
+.title {
+  font-size: 22px;
+  font-family: 'Roboto Mono', monospace; /* A more coder-like font */
+  color: #ffffff;
+  margin: 0;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+/* Base Button Style */
+.btn {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Green for Start Capturing */
+.btn-start {
+  background: rgba(34, 139, 34, 0.1); /* Light green */
+  border: 1px solid rgba(34, 139, 34, 0.4); /* Green border */
+}
+
+.btn-start:hover {
+  background: rgba(34, 139, 34, 0.3); /* Darker green on hover */
+  box-shadow: 0 4px 6px rgba(34, 139, 34, 0.4); /* Green shadow */
+}
+
+/* Orange for Stop Capturing */
+.btn-stop {
+  background: rgba(255, 165, 0, 0.1); /* Light orange */
+  border: 1px solid rgba(255, 165, 0, 0.4); /* Orange border */
+}
+
+.btn-stop:hover {
+  background: rgba(255, 165, 0, 0.3); /* Darker orange on hover */
+  box-shadow: 0 4px 6px rgba(255, 165, 0, 0.4); /* Orange shadow */
+}
+
+.icon-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+/* Icon buttons with badge counts */
+.icon-button {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05); /* More transparent */
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(12px); /* Slightly increased */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Adds a subtle border */
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds shadow on hover */
+}
+
+.icon-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3); /* Adds focus ring */
+}
+
+.icon-button .material-icons {
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #ff3b30;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.logs {
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05); /* Slightly more transparent */
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: #d1d1d1;
+}
+
+/* Notification styles */
+.notification {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(40, 40, 40, 0.8);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.notification.show {
+  opacity: 1;
+}
+
+/* Responsive design */
+@media (max-width: 320px) {
+  h1 {
+    font-size: 18px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+
+  .icon-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logs {
+    height: 150px;
+  }
+}
