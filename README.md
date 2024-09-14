@@ -49,7 +49,7 @@ ConsoleCapture requires the following permissions to function properly:
 ConsoleCapture operates entirely locally. All logs and user data are stored on your machine and are **never shared or transmitted** to external servers.
 
 ## License:
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the MIT License.
 
 ## Contribution:
 Contributions are welcome! Feel free to fork the repository, submit pull requests, or open issues for any enhancements or bug fixes.
