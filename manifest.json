@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ConsoleCapture",
-  "version": "1.1",
+  "version": "1.4",
   "description": "Filter and copy console logs including errors, warnings, and info logs with a single click.",
   "permissions": [
     "activeTab",

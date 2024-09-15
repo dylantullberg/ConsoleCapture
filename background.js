@@ -173,12 +173,23 @@ function startCapturing(tabId) {
     tabsInfo[tabId].isCapturing = true;
 
     chrome.debugger.onEvent.addListener(onEvent);
+
+    // Inject content script into the tab
+    chrome.scripting.executeScript({
+      target: { tabId: tabId },
+      files: ['content.js']
+    }, () => {
+      if (chrome.runtime.lastError) {
+        console.error('Script injection failed: ' + chrome.runtime.lastError.message);
+      }
+    });
   });
 }
 
 // Stop capturing logs using the debugger API
 function stopCapturing(tabId) {
   if (tabsInfo[tabId] && tabsInfo[tabId].isCapturing) {
+    // Detach debugger
     chrome.debugger.detach({tabId: tabId}, function() {
       if (chrome.runtime.lastError) {
         console.error('Debugger detach failed: ' + chrome.runtime.lastError.message);
@@ -187,6 +198,21 @@ function stopCapturing(tabId) {
 
       tabsInfo[tabId].isCapturing = false;
       chrome.debugger.onEvent.removeListener(onEvent);
+
+      // Remove content script from the tab
+      chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        func: () => {
+          // Function to remove the injected script
+          window.removeEventListener('message', null);
+          const script = document.querySelector('script[src="content.js"]');
+          if (script) script.remove();
+        }
+      }, () => {
+        if (chrome.runtime.lastError) {
+          console.error('Script removal failed: ' + chrome.runtime.lastError.message);
+        }
+      });
     });
   }
 }
