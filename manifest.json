@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "ConsoleCapture",
   "version": "1.1",
-  "description": "Easily filter and copy console logs with a single click, featuring auto-copy on page load! All data is stored locally, and no data is shared with external services.",
+  "description": "Filter and copy console logs including errors, warnings, and info logs with a single click.",
   "permissions": [
     "activeTab",
     "debugger",
