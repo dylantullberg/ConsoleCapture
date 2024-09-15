@@ -1,91 +1,84 @@
-<!-- popup.html -->
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>ConsoleCapture</title>
-  <link href="icons/material-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!-- Include Material Icons for icon buttons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <!-- Header Section -->
     <div class="header">
-      <img class="logo" src="icons/icon48.png" alt="ConsoleCapture Logo" />
+      <img src="icons/icon48.png" alt="Logo" class="logo">
       <h1 class="title">ConsoleCapture</h1>
     </div>
-
-    <!-- Toggle Capture Button -->
-    <button id="toggleCapture" class="btn btn-start capture-btn">
+    <button id="toggleCapture" class="btn btn-start" data-tooltip="Start Capturing Logs">
       <span id="toggleCaptureLabel">Start Capturing</span>
     </button>
-
-    <!-- Icon Buttons Section -->
-    <div id="iconButtons" class="icon-buttons">
+    <div id="notification" class="notification"></div>
+    <div class="icon-buttons">
       <!-- Row 1: Original Categories -->
       <div class="button-row">
-        <div class="icon-button" id="btnErrors" title="Copy Errors">
+        <button id="btnErrors" class="icon-button" data-tooltip="View Error Logs">
           <span class="material-icons">error</span>
-          <span class="badge" id="countErrors">0</span>
-        </div>
-        <div class="icon-button" id="btnWarnings" title="Copy Warnings">
+          <span id="countErrors" class="badge"></span>
+        </button>
+        <button id="btnWarnings" class="icon-button" data-tooltip="View Warning Logs">
           <span class="material-icons">warning</span>
-          <span class="badge" id="countWarnings">0</span>
-        </div>
-        <div class="icon-button" id="btnLogs" title="Copy Logs">
-          <span class="material-icons">article</span>
-          <span class="badge" id="countLogs">0</span>
-        </div>
-        <div class="icon-button" id="btnInfo" title="Copy Info">
+          <span id="countWarnings" class="badge"></span>
+        </button>
+        <button id="btnLogs" class="icon-button" data-tooltip="View General Logs">
+          <span class="material-icons">description</span>
+          <span id="countLogs" class="badge"></span>
+        </button>
+        <button id="btnInfo" class="icon-button" data-tooltip="View Info Logs">
           <span class="material-icons">info</span>
-          <span class="badge" id="countInfo">0</span>
-        </div>
-        <div class="icon-button" id="btnDebug" title="Copy Debug">
+          <span id="countInfo" class="badge"></span>
+        </button>
+        <button id="btnDebug" class="icon-button" data-tooltip="View Debug Logs">
           <span class="material-icons">bug_report</span>
-          <span class="badge" id="countDebug">0</span>
-        </div>
+          <span id="countDebug" class="badge"></span>
+        </button>
       </div>
-
       <!-- Row 2: Additional Categories -->
       <div class="button-row">
-        <div class="icon-button" id="btnDeprecationWarnings" title="Copy Deprecation Warnings">
+        <button id="btnDeprecationWarnings" class="icon-button" data-tooltip="View Deprecation Warnings">
           <span class="material-icons">warning_amber</span>
-          <span class="badge" id="countDeprecationWarnings">0</span>
-        </div>
-        <div class="icon-button" id="btnNetworkErrors" title="Copy Network Errors">
+          <span id="countDeprecationWarnings" class="badge"></span>
+        </button>
+        <button id="btnNetworkErrors" class="icon-button" data-tooltip="View Network Errors">
           <span class="material-icons">network_check</span>
-          <span class="badge" id="countNetworkErrors">0</span>
-        </div>
-        <div class="icon-button" id="btnCORSErrors" title="Copy CORS Errors">
+          <span id="countNetworkErrors" class="badge"></span>
+        </button>
+        <button id="btnCORSErrors" class="icon-button" data-tooltip="View CORS Errors">
+          <span class="material-icons">public</span>
+          <span id="countCORSErrors" class="badge"></span>
+        </button>
+        <button id="btnSecurityWarnings" class="icon-button" data-tooltip="View Security Warnings">
           <span class="material-icons">security</span>
-          <span class="badge" id="countCORSErrors">0</span>
-        </div>
-        <div class="icon-button" id="btnSecurityWarnings" title="Copy Security Warnings">
-          <span class="material-icons">security_update_warning</span>
-          <span class="badge" id="countSecurityWarnings">0</span>
-        </div>
-        <div class="icon-button" id="btnExceptions" title="Copy Exceptions">
-          <span class="material-icons">error_outline</span>
-          <span class="badge" id="countExceptions">0</span>
-        </div>
+          <span id="countSecurityWarnings" class="badge"></span>
+        </button>
+        <button id="btnExceptions" class="icon-button" data-tooltip="View Exceptions">
+          <span class="material-icons">report_problem</span>
+          <span id="countExceptions" class="badge"></span>
+        </button>
       </div>
-
       <!-- Row 3: Grouped Copy Buttons -->
       <div class="button-row">
-        <div class="icon-button" id="btnCopyAllErrors" title="Copy All Errors">
-          <span class="material-icons">error_outline</span>
-          <span class="badge" id="countCopyAllErrors">0</span>
-        </div>
-        <div class="icon-button" id="btnCopyAllWarnings" title="Copy All Warnings">
-          <span class="material-icons">warning_amber</span>
-          <span class="badge" id="countCopyAllWarnings">0</span>
-        </div>
+        <button id="btnCopyAllErrors" class="icon-button" report_problem="Copy All Errors">
+          <span class="material-icons">content_copy</span>
+          <span id="countCopyAllErrors" class="badge"></span>
+        </button>
+        <button id="btnCopyAllWarnings" class="icon-button" warning_amber="Copy All Warnings">
+          <span class="material-icons">content_copy</span>
+          <span id="countCopyAllWarnings" class="badge"></span>
+        </button>
       </div>
     </div>
-
-    <!-- Logs Display -->
-    <div id="logs" class="logs"></div>
-    <!-- Notification Display -->
-    <div id="notification" class="notification"></div>
+    <div id="logs" class="logs">
+      <!-- Captured logs will appear here -->
+    </div>
   </div>
   <script src="popup.js"></script>
 </body>

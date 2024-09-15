@@ -1,14 +1,16 @@
 {
   "manifest_version": 3,
   "name": "ConsoleCapture",
-  "version": "1.4",
+  "version": "1.8",
   "description": "Filter and copy console logs including errors, warnings, and info logs with a single click.",
   "permissions": [
     "activeTab",
     "debugger",
     "scripting",
     "storage",
-    "clipboardWrite"
+    "notifications",
+    "tabs",
+    "webNavigation"
   ],
   "host_permissions": [
     "<all_urls>"
@@ -29,5 +31,8 @@
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
   }
 }

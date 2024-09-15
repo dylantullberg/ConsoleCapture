@@ -1,53 +1,25 @@
 // content.js
 
 (function() {
-  // Inject script into page context
-  const script = document.createElement('script');
-  script.textContent = '(' + function() {
-    const logTypes = ['log', 'info', 'warn', 'error'];
+  console.log('ConsoleCapture: content.js loaded.');
 
-    logTypes.forEach(type => {
-      const original = console[type];
-      console[type] = function(...args) {
-        original.apply(console, args);
-        window.postMessage({
-          source: 'ConsoleCapture',
-          type: type,
-          args: args
-        }, '*');
-      };
-    });
-
-    // Listen for unhandled promise rejections
-    window.addEventListener('unhandledrejection', function(event) {
-      window.postMessage({
-        source: 'ConsoleCapture',
-        type: 'unhandledPromiseRejection',
-        reason: event.reason
-      }, '*');
-    });
-
-    // Listen for errors/exceptions
-    window.addEventListener('error', function(event) {
-      window.postMessage({
-        source: 'ConsoleCapture',
-        type: 'exception',
-        message: event.message,
-        filename: event.filename,
-        lineno: event.lineno,
-        colno: event.colno,
-        error: event.error
-      }, '*');
-    });
-  } + ')();';
-  document.documentElement.appendChild(script);
-  script.remove();
-
-  // Listen for messages from page context
-  window.addEventListener('message', function(event) {
+  function handleMessage(event) {
     if (event.source !== window) return;
     if (event.data && event.data.source === 'ConsoleCapture') {
-      chrome.runtime.sendMessage(event.data);
+      console.log('ConsoleCapture: Sending message to background:', event.data);
+      if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
+        chrome.runtime.sendMessage(event.data, function(response) {
+          if (chrome.runtime.lastError) {
+            console.error('ConsoleCapture: Error sending message:', chrome.runtime.lastError.message);
+          } else {
+            console.log('ConsoleCapture: Message sent successfully:', response);
+          }
+        });
+      } else {
+        console.error('ConsoleCapture: chrome.runtime.sendMessage is not available.');
+      }
     }
-  });
+  }
+
+  window.addEventListener('message', handleMessage);
 })();

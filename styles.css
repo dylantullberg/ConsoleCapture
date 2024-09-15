@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-  padding: 16px;
+  padding: 30px;
 }
 
 .header {
@@ -51,6 +51,10 @@ h1 {
   cursor: pointer;
   backdrop-filter: blur(10px);
   transition: background 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space between icon and text */
 }
 
 /* Green for Start Capturing */
@@ -106,11 +110,13 @@ h1 {
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover effect for icon buttons */
 .icon-button:hover {
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds shadow on hover */
 }
 
+/* Focus effect for icon buttons */
 .icon-button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3); /* Adds focus ring */
@@ -158,14 +164,13 @@ h1 {
 /* Notification styles */
 .notification {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 10px;
+  right: 10px;
   background: rgba(40, 40, 40, 0.8);
   color: #ffffff;
-  padding: 12px 24px;
+  padding: 8px 16px;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 14px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -173,6 +178,52 @@ h1 {
 
 .notification.show {
   opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom Tooltip Styles */
+.icon-button[data-tooltip]:hover::after,
+.btn[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.icon-button[data-tooltip]:hover::after,
+.btn[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+.icon-button[data-tooltip]::before,
+.btn[data-tooltip]::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.85) transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.icon-button[data-tooltip]:hover::before,
+.btn[data-tooltip]:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
 }
 
 /* Responsive design */
