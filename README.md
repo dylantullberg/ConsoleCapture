@@ -92,6 +92,8 @@ Contributions are welcome! Feel free to fork the repository, submit pull request
 
 To facilitate testing of various console logs and ensure that **ConsoleCapture** functions as expected, use the following sample HTML page. This page intentionally triggers different types of console logs, including Deprecation Warnings, Network Errors, CORS Errors, Info, and Debug logs.
 
+Feel free to use this site to test effortlessly: https://jsbin.com/terukaduna/edit?html,js,output
+
 ```html
 <!DOCTYPE html>
 <html>
