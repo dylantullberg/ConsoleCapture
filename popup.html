@@ -1,3 +1,4 @@
+<!-- popup.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,39 +8,83 @@
 </head>
 <body>
   <div class="container">
+    <!-- Header Section -->
     <div class="header">
-      <img class="logo" src="icons/icon48.png" alt="ConsoleCapture Logo" /> <!-- Updated to use your icon -->
+      <img class="logo" src="icons/icon48.png" alt="ConsoleCapture Logo" />
       <h1 class="title">ConsoleCapture</h1>
     </div>
 
+    <!-- Toggle Capture Button -->
     <button id="toggleCapture" class="btn btn-start capture-btn">
       <span id="toggleCaptureLabel">Start Capturing</span>
     </button>
 
+    <!-- Icon Buttons Section -->
     <div id="iconButtons" class="icon-buttons">
-      <div class="icon-button" id="btnErrors" title="Copy Errors">
-        <span class="material-icons">error</span>
-        <span class="badge" id="countErrors">0</span>
+      <!-- Row 1: Original Categories -->
+      <div class="button-row">
+        <div class="icon-button" id="btnErrors" title="Copy Errors">
+          <span class="material-icons">error</span>
+          <span class="badge" id="countErrors">0</span>
+        </div>
+        <div class="icon-button" id="btnWarnings" title="Copy Warnings">
+          <span class="material-icons">warning</span>
+          <span class="badge" id="countWarnings">0</span>
+        </div>
+        <div class="icon-button" id="btnLogs" title="Copy Logs">
+          <span class="material-icons">article</span>
+          <span class="badge" id="countLogs">0</span>
+        </div>
+        <div class="icon-button" id="btnInfo" title="Copy Info">
+          <span class="material-icons">info</span>
+          <span class="badge" id="countInfo">0</span>
+        </div>
+        <div class="icon-button" id="btnDebug" title="Copy Debug">
+          <span class="material-icons">bug_report</span>
+          <span class="badge" id="countDebug">0</span>
+        </div>
       </div>
-      <div class="icon-button" id="btnWarnings" title="Copy Warnings">
-        <span class="material-icons">warning</span>
-        <span class="badge" id="countWarnings">0</span>
+
+      <!-- Row 2: Additional Categories -->
+      <div class="button-row">
+        <div class="icon-button" id="btnDeprecationWarnings" title="Copy Deprecation Warnings">
+          <span class="material-icons">warning_amber</span>
+          <span class="badge" id="countDeprecationWarnings">0</span>
+        </div>
+        <div class="icon-button" id="btnNetworkErrors" title="Copy Network Errors">
+          <span class="material-icons">network_check</span>
+          <span class="badge" id="countNetworkErrors">0</span>
+        </div>
+        <div class="icon-button" id="btnCORSErrors" title="Copy CORS Errors">
+          <span class="material-icons">security</span>
+          <span class="badge" id="countCORSErrors">0</span>
+        </div>
+        <div class="icon-button" id="btnSecurityWarnings" title="Copy Security Warnings">
+          <span class="material-icons">security_update_warning</span>
+          <span class="badge" id="countSecurityWarnings">0</span>
+        </div>
+        <div class="icon-button" id="btnExceptions" title="Copy Exceptions">
+          <span class="material-icons">error_outline</span>
+          <span class="badge" id="countExceptions">0</span>
+        </div>
       </div>
-      <div class="icon-button" id="btnLogs" title="Copy Logs">
-        <span class="material-icons">article</span>
-        <span class="badge" id="countLogs">0</span>
-      </div>
-      <div class="icon-button" id="btnInfo" title="Copy Info">
-        <span class="material-icons">info</span>
-        <span class="badge" id="countInfo">0</span>
-      </div>
-      <div class="icon-button" id="btnDebug" title="Copy Debug">
-        <span class="material-icons">bug_report</span>
-        <span class="badge" id="countDebug">0</span>
+
+      <!-- Row 3: Grouped Copy Buttons -->
+      <div class="button-row">
+        <div class="icon-button" id="btnCopyAllErrors" title="Copy All Errors">
+          <span class="material-icons">error_outline</span>
+          <span class="badge" id="countCopyAllErrors">0</span>
+        </div>
+        <div class="icon-button" id="btnCopyAllWarnings" title="Copy All Warnings">
+          <span class="material-icons">warning_amber</span>
+          <span class="badge" id="countCopyAllWarnings">0</span>
+        </div>
       </div>
     </div>
 
+    <!-- Logs Display -->
     <div id="logs" class="logs"></div>
+    <!-- Notification Display -->
     <div id="notification" class="notification"></div>
   </div>
   <script src="popup.js"></script>

@@ -1,3 +1,5 @@
+/* styles.css */
+
 /* Glassmorphism Dark Mode Styles */
 body {
   font-family: 'Roboto', Arial, sans-serif;
@@ -73,10 +75,19 @@ h1 {
   box-shadow: 0 4px 6px rgba(255, 165, 0, 0.4); /* Orange shadow */
 }
 
+/* Icon buttons container */
 .icon-buttons {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 12px;
   margin-bottom: 16px;
+}
+
+/* Each button row */
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
 }
 
 /* Icon buttons with badge counts */
@@ -110,6 +121,7 @@ h1 {
   font-size: 24px;
 }
 
+/* Badge for counts */
 .badge {
   position: absolute;
   top: -4px;
@@ -119,8 +131,15 @@ h1 {
   border-radius: 50%;
   padding: 2px 6px;
   font-size: 12px;
+  display: none; /* Hidden by default */
 }
 
+/* Show badge when applicable */
+.badge.show {
+  display: inline-block;
+}
+
+/* Logs display */
 .logs {
   height: 200px;
   overflow-y: auto;
