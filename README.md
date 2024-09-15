@@ -1,7 +1,3 @@
-Certainly! Below are the **Changelog**, **Commit Message**, and the **Revised README** for your **ConsoleCapture** Chrome extension. These updates reflect the comprehensive enhancements and bug fixes we've implemented based on your feedback.
-
----
-
 ## 📝 Changelog
 
 ### [1.3] - 2024-04-27
@@ -391,7 +387,3 @@ This project is licensed under the MIT License.
 
 - **Dylan Tullberg**  
   GitHub: [https://github.com/dylantullberg](https://github.com/dylantullberg)
-
----
-
-Feel free to further customize and enhance the extension based on user feedback and additional requirements. If you encounter any issues or need further assistance, don't hesitate to reach out!
