@@ -293,27 +293,11 @@ After implementing the above updates, follow these steps to ensure that your **C
 
 ## 🔒 Compliance and Permissions Considerations
 
-Ensure that your extension adheres to Chrome's extension policies and manages permissions appropriately.
-
 1. **Permissions Required:**
    - **`clipboardWrite`:** Necessary for the copy-to-clipboard functionality.
    - **`debugger`:** Required for attaching the debugger to capture logs via the Debugger API.
    - **`activeTab` and `host_permissions` (`<all_urls>`):** Allow the extension to access and capture logs from any webpage.
    - **`scripting` and `storage`:** Already included and necessary for capturing and managing logs.
-
-2. **Handling Sensitive Data:**
-   - **Privacy:** Ensure that the logs being captured do not inadvertently contain sensitive user information.
-   - **Filtering:** Implement filters or allow users to exclude certain types of logs if needed.
-
-3. **User Consent:**
-   - **Transparency:** Inform users about the types of logs being captured and how they can manage or clear them.
-   - **Control:** Provide options to start/stop capturing and to clear logs, giving users control over their data.
-
-4. **Error Handling:**
-   - **Graceful Failures:** Handle scenarios where permissions are denied or clipboard access fails, providing clear feedback to the user.
-
-5. **Security:**
-   - **Sanitization:** Ensure that any data copied to the clipboard is sanitized to prevent potential security vulnerabilities.
 
 ---
 
